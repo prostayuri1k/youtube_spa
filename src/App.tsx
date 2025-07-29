@@ -1,13 +1,24 @@
 import '@ant-design/v5-patch-for-react-19';
-import Search from "./Pages/Search/Search.tsx";
-// import Authorization from "./Pages/Authorization.tsx";
+import {Outlet, useNavigate} from "react-router";
+import {useEffect} from "react";
 
 
 function App() {
+
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (token) {
+            navigate('search');
+        } else {
+            navigate('authorization')
+        }
+    }, [token]);
+
     return (
         <>
-            <Search/>
-            {/*<Authorization/>*/}
+            <Outlet/>
         </>
     )
 }

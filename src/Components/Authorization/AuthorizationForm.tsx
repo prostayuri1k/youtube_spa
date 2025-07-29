@@ -2,6 +2,7 @@ import {Button, Form, Input, notification} from "antd";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import {type LoginData, usersApi} from "../../API/UsersAPI/usersApi.ts";
 import {useState} from "react";
+import {useNavigate} from "react-router";
 
 const AuthorizationForm = () => {
 
@@ -9,6 +10,7 @@ const AuthorizationForm = () => {
 
     const [api, contextHolder] = notification.useNotification();
     const [loading, setLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const openNotificationWithIcon = (type: NotificationType, message: string) => {
         api[type]({
@@ -23,6 +25,7 @@ const AuthorizationForm = () => {
             .then((res) => {
                 openNotificationWithIcon('success', 'Успешный вход!');
                 localStorage.setItem('token', res.data.token);
+                navigate('search/default');
             })
             .catch((err) => {
                 if (err.response) {

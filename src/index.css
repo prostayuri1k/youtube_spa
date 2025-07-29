@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+    --color-siberian-blue: #1390E5;
+}
+
 body {
     background: #fafafa;
     font-family: Roboto, sans-serif;

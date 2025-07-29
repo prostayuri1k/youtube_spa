@@ -7,6 +7,9 @@ import Authorization from "./Pages/Authorization.tsx";
 import Search from "./Pages/Search/Search.tsx";
 import Default from "./Pages/Search/Default/Default.tsx";
 import Favourite from "./Pages/Search/Favourite/Favourite.tsx";
+import Results from "./Pages/Search/Results/Results.tsx";
+import Card from "./Pages/Search/Results/Card/Card.tsx";
+import List from "./Pages/Search/Results/List/List.tsx";
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
@@ -18,6 +21,10 @@ createRoot(document.getElementById('root')!).render(
                       <Route element={<Search/>}>
                           <Route path={'search'} element={<Default/>}/>
                           <Route path={'favourite'} element={<Favourite/>}/>
+                          <Route element={<Results/>}>
+                              <Route path={"results/card"} element={<Card/>}/>
+                              <Route path={"results/list"} element={<List/>}/>
+                          </Route>
                       </Route>
                   </Route>
               </Routes>

@@ -11,7 +11,7 @@ const AntdProvider = ({children}: IAntProviderProps) => {
         theme={{
             components: {
                 Input: {
-                    activeBg: 'rgba(197, 228, 249, 0.3)'
+                    activeBg: 'rgba(197, 228, 249, 0.3)',
                 }
             }
         }}

@@ -2,6 +2,7 @@
 
 @theme {
     --color-siberian-blue: #1390E5;
+    --color-gray: rgba(23, 23, 25, 0.3)
 }
 
 body {

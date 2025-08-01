@@ -7,7 +7,7 @@ const Default = () => {
     const [loading, setLoading] = useState(false);
     const onSearch = (value: string) => {
         console.log(value);
-        navigate('/results/card')
+        navigate('/results')
     }
 
     return (

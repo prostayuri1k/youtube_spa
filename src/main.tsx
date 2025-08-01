@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import {createRoot} from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import AntdProvider from "./Providers/AntdProvider.tsx";
@@ -8,28 +8,23 @@ import Search from "./Pages/Search/Search.tsx";
 import Default from "./Pages/Search/Default/Default.tsx";
 import Favourite from "./Pages/Search/Favourite/Favourite.tsx";
 import Results from "./Pages/Search/Results/Results.tsx";
-import Card from "./Pages/Search/Results/Card/Card.tsx";
-import List from "./Pages/Search/Results/List/List.tsx";
 
 createRoot(document.getElementById('root')!).render(
-  // <StrictMode>
-      <BrowserRouter>
-          <AntdProvider>
-              <Routes>
-                  <Route path={"/"} element={<App/>}>
-                      <Route path={"authorization"} element={<Authorization/>}/>
-                      <Route element={<Search/>}>
-                          <Route path={'search'} element={<Default/>}/>
-                          <Route path={'favourite'} element={<Favourite/>}/>
-                          <Route element={<Results/>}>
-                              <Route path={"results/card"} element={<Card/>}/>
-                              <Route path={"results/list"} element={<List/>}/>
-                          </Route>
-                      </Route>
-                  </Route>
-              </Routes>
-              <App />
-          </AntdProvider>
-      </BrowserRouter>
-  // </StrictMode>,
+    // <StrictMode>
+    <BrowserRouter>
+        <AntdProvider>
+            <Routes>
+                <Route path={"/"} element={<App/>}>
+                    <Route path={"authorization"} element={<Authorization/>}/>
+                    <Route element={<Search/>}>
+                        <Route path={'search'} element={<Default/>}/>
+                        <Route path={'favourite'} element={<Favourite/>}/>
+                        <Route path={"results"} element={<Results/>}/>
+                    </Route>
+                </Route>
+            </Routes>
+            <App/>
+        </AntdProvider>
+    </BrowserRouter>
+    // </StrictMode>,
 )

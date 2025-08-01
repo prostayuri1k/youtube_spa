@@ -1,17 +1,17 @@
-import {Outlet} from "react-router";
 import Search from "antd/es/input/Search";
 import {useState} from "react";
-import {HeartFilled, HeartOutlined} from "@ant-design/icons";
+import {AppstoreOutlined, HeartOutlined, UnorderedListOutlined} from "@ant-design/icons";
 import {Button} from "antd";
+import Card from "./Card/Card.tsx";
+import List from "./List/List.tsx";
 
 const Results = () => {
 
+    const [resultsView, setResultsView] = useState<'card'|'list'>('card');
     const [loading, setLoading] = useState(false);
     const onSearch = (value: string) => {
         console.log(value)
     }
-
-
 
     return (
         <div>
@@ -29,16 +29,25 @@ const Results = () => {
                         loading={loading}
                     />
                 </div>
-                <div className={"flex justify-between"}>
+                <div className={"w-full flex justify-between mb-5"}>
                     <div>
                         <span className={"mr-4"}>Видео по запросу <b>«чем кормить кота» </b></span>
                         <span className={"text-gray"}>9999</span>
                     </div>
                     <div>
+                        <UnorderedListOutlined
+                            className={`${resultsView === "list" ? '!text-black mr-4 ' : 'mr-4 !text-gray '}`}
+                            onClick={() => setResultsView('list')}
+                        />
+                        <AppstoreOutlined
+                            className={`${resultsView === "card" ? '!text-black' : ' !text-gray '}`}
+                            onClick={() => setResultsView('card')}
+                        />
 
                     </div>
                 </div>
-                <Outlet/>
+                {resultsView === 'card' && (<Card/>)}
+                {resultsView === 'list' && (<List/>)}
             </div>
         </div>
     );

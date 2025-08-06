@@ -4,10 +4,12 @@ import {AppstoreOutlined, HeartOutlined, UnorderedListOutlined} from "@ant-desig
 import {Button} from "antd";
 import Card from "./Card/Card.tsx";
 import List from "./List/List.tsx";
+import Modal from "../../../Components/Modal/Modal.tsx";
 
 const Results = () => {
 
     const [resultsView, setResultsView] = useState<'card'|'list'>('card');
+    const [showModal, setShowModal] = useState<boolean>(false);
     const [loading, setLoading] = useState(false);
     const onSearch = (value: string) => {
         console.log(value)
@@ -15,11 +17,12 @@ const Results = () => {
 
     return (
         <div>
+            <Modal showModal={showModal} setShowModal={setShowModal}/>
             <div className={"mx-auto container flex flex-col justify-center items-start pt-10"}>
                 <h2 className={"text-3xl mb-5"}>Поиск видео</h2>
                 <div className={"mb-13.5 w-full"}>
                     <Search
-                        suffix={<Button type={"link"}><HeartOutlined/></Button>}
+                        suffix={<Button onClick={() => setShowModal(!showModal)} type={"link"}><HeartOutlined/></Button>}
                         variant={"outlined"}
                         placeholder="Как кормить кота"
                         allowClear
